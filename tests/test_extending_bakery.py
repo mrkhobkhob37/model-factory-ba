@@ -1,8 +1,8 @@
 import pytest
 
-from model_bakery import baker
-from model_bakery.exceptions import CustomBakerNotFound, InvalidCustomBaker
-from model_bakery.random_gen import gen_from_list
+from model_factory_ba import baker
+from model_factory_ba.exceptions import CustomBakerNotFound, InvalidCustomBaker
+from model_factory_ba.random_gen import gen_from_list
 from tests.generic.models import Person
 
 

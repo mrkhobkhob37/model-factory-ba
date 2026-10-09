@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `model_bakery` will be documented in this file.
+All notable changes to `model_factory_ba` will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
@@ -163,7 +163,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add py.typed export per [PEP 561](https://www.python.org/dev/peps/pep-0561/) [PR #158](https://github.com/model-bakers/model_bakery/pull/158)
 
 ### Changed
-- Extend type hints in `model_bakery.recipe` module, make `Recipe` class generic [PR #292](https://github.com/model-bakers/model_bakery/pull/292)
+- Extend type hints in `model_factory_ba.recipe` module, make `Recipe` class generic [PR #292](https://github.com/model-bakers/model_bakery/pull/292)
 - Explicitly add _fill_optional parameters to baker.make and baker.prepare to aid IDE autocomplete function. [PR #264](https://github.com/model-bakers/model_bakery/pull/264)
 - Fixed errors with reverse M2M relationships [PR #299](https://github.com/model-bakers/model_bakery/pull/299)
 - Fixed errors with reverse M2O relationships [PR #300](https://github.com/model-bakers/model_bakery/pull/300)
@@ -240,8 +240,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - [dev] Update Dependabot config file to support GH Actions and auto-rebase [PR #160](https://github.com/model-bakers/model_bakery/pull/160)
 
 ### Removed
-- `model_bakery.timezone.now` fallback (use `django.utils.timezone.now` instead)  [PR #141](https://github.com/model-bakers/model_bakery/pull/141)
-- `model_bakery.timezone.smart_datetime` function (directly use `model_bakery.timezone.tz_aware` instead)  [PR #147](https://github.com/model-bakers/model_bakery/pull/147)
+- `model_factory_ba.timezone.now` fallback (use `django.utils.timezone.now` instead)  [PR #141](https://github.com/model-bakers/model_bakery/pull/141)
+- `model_factory_ba.timezone.smart_datetime` function (directly use `model_factory_ba.timezone.tz_aware` instead)  [PR #147](https://github.com/model-bakers/model_bakery/pull/147)
 - Remove all signs of Django 1.11 (as we dropped it in 1.2.1) [PR #157](https://github.com/model-bakers/model_bakery/pull/157)
 - Drop unsupported Django 3.0 from CI (https://www.djangoproject.com/download/#unsupported-versions) [PR #176](https://github.com/model-bakers/model_bakery/pull/176)
 
@@ -335,6 +335,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
-- Rename model_mommy code to model_bakery
+- Rename model_mommy code to model_factory_ba
 
 ### Removed

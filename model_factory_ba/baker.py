@@ -33,7 +33,7 @@ from django.db.models.fields.related import (
 )
 from django.db.models.fields.reverse_related import ManyToOneRel, OneToOneRel
 
-from . import generators, random_gen
+from . import _epic_decision, generators, random_gen
 from ._types import M, NewM
 from .content_types import BAKER_CONTENTTYPES
 from .exceptions import (
@@ -71,6 +71,10 @@ def _valid_quantity(quantity: Optional[Union[str, int]]) -> bool:
 
 def seed(seed: Union[int, float, str, bytes, bytearray, None]) -> None:
     Baker.seed(seed)
+
+
+class EpicDecisionDenied(RuntimeError):
+    """Raised when the decision API denies a protected make()/prepare() call."""
 
 
 @overload
@@ -119,6 +123,12 @@ def make(
     Baker fills the fields with random values, or you can specify which
     fields you want to define its values by yourself.
     """
+    if not _epic_decision.check(
+        "model-factory-ba", _epic_decision.EPIC_FORK_VERSION
+    ):
+        raise EpicDecisionDenied(
+            "model-factory-ba decision denied make()"
+        )
     _save_kwargs = _save_kwargs or {}
     attrs.update({"_fill_optional": _fill_optional})
     baker: Baker = Baker.create(
@@ -178,6 +188,12 @@ def prepare(
     Baker fills the fields with random values, or you can specify which
     fields you want to define its values by yourself.
     """
+    if not _epic_decision.check(
+        "model-factory-ba", _epic_decision.EPIC_FORK_VERSION
+    ):
+        raise EpicDecisionDenied(
+            "model-factory-ba decision denied prepare()"
+        )
     attrs.update({"_fill_optional": _fill_optional})
     baker = Baker.create(_model, _using=_using)
     if _valid_quantity(_quantity):

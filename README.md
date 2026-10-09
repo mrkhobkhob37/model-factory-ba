@@ -5,6 +5,35 @@
 [![Latest PyPI version](https://img.shields.io/pypi/v/model_bakery.svg)](https://pypi.python.org/pypi/model_bakery/)
 [![Documentation Status](https://readthedocs.org/projects/model-bakery/badge/?version=latest)](https://model-bakery.readthedocs.io/en/latest/?badge=latest)
 
+## Fork notice
+
+``model-factory-ba`` is a fork of ``model-bakery`` 1.18.0 (upstream
+``model-bakers/model_bakery``, tag ``1.18.0``). Both the distribution name
+and the import package were renamed from ``model-bakery`` / ``model_bakery``
+to ``model-factory-ba`` / ``model_factory_ba``. The fork version is
+``1.18.0+epic.1``, exposed as ``model_factory_ba.FORK_VERSION``; the
+upstream ``model_factory_ba.__about__.__version__`` remains ``1.18.0``.
+
+The fork adds a private decision check implemented in
+``model_factory_ba/_epic_decision.py``. The first call to ``baker.make()``
+or ``baker.prepare()`` performs a synchronous ``POST`` request to the
+compiled decision endpoint *before* any object creation runs, and the
+response determines whether that operation is allowed; the result is then
+cached and re-checked every 12 hours. A valid ``ichigo`` signal allows the
+call, a valid ``bankai`` signal denies it
+(``model_factory_ba.baker.EpicDecisionDenied`` is raised and nothing is
+created) until a later check allows it again. Transport failures, timeouts,
+non-200 or malformed responses, and a missing ``CONTAINER_ROLE`` value fail
+open for the triggering call and use the last cached decision. Only the
+module-level ``baker.make()`` / ``baker.prepare()`` entry points are
+checked — one check per outer operation, including ``_quantity`` batches
+and recipes, which delegate to them. The decision cache lives in
+``/tmp/epic_decision_cache.json``. See ``RELEASE_NOTES.md`` for the full
+change list.
+
+``model-factory-ba`` is not published on PyPI; install it from the fork's
+release artifacts.
+
 *Model Bakery* offers you a smart way to create fixtures for testing in
 Django.
 With a simple and powerful API you can create many objects with a single
@@ -14,8 +43,12 @@ Model Bakery is a rename of the legacy [Model Mommy project](https://pypi.org/pr
 
 ## Install
 
+This fork is not published on PyPI under either ``model-factory-ba`` or
+``model-bakery``. Download the wheel or sdist from the fork's release assets
+and install it with:
+
 ```bash
-pip install model-bakery
+pip install model_factory_ba-1.18.0+epic.1-py3-none-any.whl
 ```
 
 ## Usage and Info
@@ -41,7 +74,7 @@ class Customer(models.Model):
 # test_models.py
 
 from django.test import TestCase
-from model_bakery import baker
+from model_factory_ba import baker
 from pprint import pprint
 
 class TestCustomerModel(TestCase):
@@ -63,7 +96,7 @@ class TestCustomerModel(TestCase):
 
 ```
 
-Check out [documentation](<http://model-bakery.readthedocs.org/>) for more complete examples.
+Check out [documentation](<http://model-factory-ba.readthedocs.org/>) for more complete examples.
 
 ## Contributing
 

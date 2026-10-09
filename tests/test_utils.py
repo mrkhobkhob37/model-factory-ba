@@ -4,7 +4,7 @@ from inspect import getmodule
 
 import pytest
 
-from model_bakery.utils import get_calling_module, import_from_str, seq
+from model_factory_ba.utils import get_calling_module, import_from_str, seq
 from tests.generic.models import User
 
 

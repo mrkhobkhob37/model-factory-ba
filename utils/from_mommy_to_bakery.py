@@ -1,5 +1,5 @@
 """
-Migrate from model_mommy to model_bakery.
+Migrate from model_mommy to model_factory_ba.
 
 ``python from_mommy_to_bakery.py --dry-run``
 
@@ -18,7 +18,7 @@ PACKAGE_LEGACY_MODULE = r"\bmommy\b"
 PACKAGE_LEGACY_MODULE_PATTERN = re.compile(PACKAGE_LEGACY_MODULE)
 
 LEGACY_AND_NEW = [
-    {"old": PACKAGE_NAME_PATTERN, "new": r"model_bakery"},
+    {"old": PACKAGE_NAME_PATTERN, "new": r"model_factory_ba"},
     {"old": PACKAGE_RECIPES_PATTERN, "new": r"baker_recipes"},
     {"old": PACKAGE_LEGACY_MODULE_PATTERN, "new": r"baker"},
 ]
@@ -101,7 +101,7 @@ def check_files(dry_run):
 
 
 if __name__ == "__main__":
-    description = "Help you to migrate from model_mommy to model_bakery."
+    description = "Help you to migrate from model_mommy to model_factory_ba."
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(
         "--dry-run",

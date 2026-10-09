@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from django.utils.timezone import now
 
-from model_bakery.recipe import Recipe, foreign_key, related, seq
+from model_factory_ba.recipe import Recipe, foreign_key, related, seq
 from tests.generic.models import (
     TEST_TIME,
     Dog,

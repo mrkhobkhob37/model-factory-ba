@@ -11,14 +11,14 @@ from django.test import TestCase, override_settings
 
 import pytest
 
-from model_bakery import baker, random_gen
-from model_bakery.baker import BAKER_CONTENTTYPES, MAX_MANY_QUANTITY
-from model_bakery.exceptions import (
+from model_factory_ba import baker, random_gen
+from model_factory_ba.baker import BAKER_CONTENTTYPES, MAX_MANY_QUANTITY
+from model_factory_ba.exceptions import (
     AmbiguousModelName,
     InvalidQuantityException,
     ModelNotFound,
 )
-from model_bakery.timezone import tz_aware
+from model_factory_ba.timezone import tz_aware
 from tests.generic import models
 from tests.generic.forms import DummyGenericIPAddressFieldForm
 
@@ -26,7 +26,7 @@ from tests.generic.forms import DummyGenericIPAddressFieldForm
 def test_import_seq_from_baker():
     """Test import seq method from baker module."""
     try:
-        from model_bakery.baker import seq  # NoQA
+        from model_factory_ba.baker import seq  # NoQA
     except ImportError:
         pytest.fail(f"{ImportError.__name__} raised")
 

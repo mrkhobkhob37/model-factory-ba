@@ -6,10 +6,10 @@ Model Bakery has a [Python script](https://github.com/model-bakers/model_bakery/
 
 ```console
 $ pip uninstall model_mommy
-$ pip install model_bakery
+$ pip install model_factory_ba
 $ wget https://raw.githubusercontent.com/model-bakers/model_bakery/main/utils/from_mommy_to_bakery.py
 $ python from_mommy_to_bakery.py --dry-run  # will list the files that'll be changed
-$ python from_mommy_to_bakery.py            # migrate from model_mommy to model_bakery
+$ python from_mommy_to_bakery.py            # migrate from model_mommy to model_factory_ba
 $ python manage.py test
 ```
 

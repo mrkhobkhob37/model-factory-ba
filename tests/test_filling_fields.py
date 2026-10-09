@@ -15,10 +15,10 @@ from django.db.models import FileField, ImageField, fields
 
 import pytest
 
-from model_bakery import baker
-from model_bakery.content_types import BAKER_CONTENTTYPES
-from model_bakery.gis import BAKER_GIS
-from model_bakery.random_gen import gen_related
+from model_factory_ba import baker
+from model_factory_ba.content_types import BAKER_CONTENTTYPES
+from model_factory_ba.gis import BAKER_GIS
+from model_factory_ba.random_gen import gen_related
 from tests.generic import generators, models
 
 try:
@@ -411,7 +411,7 @@ class TestFillingCustomFields:
     def test_uses_generator_defined_on_settings_for_custom_foreignkey(self, custom_cfg):
         """Should use the function defined in the import path for a foreign key field."""
         generator_dict = {
-            "tests.generic.fields.CustomForeignKey": "model_bakery.random_gen.gen_related"
+            "tests.generic.fields.CustomForeignKey": "model_factory_ba.random_gen.gen_related"
         }
         settings.BAKER_CUSTOM_FIELDS_GEN = generator_dict
         obj = baker.make(

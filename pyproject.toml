@@ -2,9 +2,13 @@
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+# Fork note: file-based versioning (hatch version path) was replaced with a
+# static version below so tags, checkouts, and sdist builds can never
+# silently disagree about the fork version.
+
 [project]
-name = "model-bakery"
-dynamic = ["version"]
+name = "model-factory-ba"
+version = "1.18.0+epic.1"
 description = "Smart object creation facility for Django."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -63,28 +67,28 @@ Homepage = "https://github.com/model-bakers/model_bakery"
 branch = true
 parallel = true
 source = [
-    "model_bakery",
+    "model_factory_ba",
 ]
 omit = [
-    "model_bakery/__about__.py",
-    "model_bakery/_types.py",
+    "model_factory_ba/__about__.py",
+    "model_factory_ba/_types.py",
 ]
 
 [tool.coverage.paths]
 source = [
-    "model_bakery",
-    ".tox/**/site-packages/model_bakery",
+    "model_factory_ba",
+    ".tox/**/site-packages/model_factory_ba",
 ]
 
 [tool.coverage.report]
 show_missing = true
 
-[tool.hatch.version]
-path = "model_bakery/__about__.py"
+[tool.hatch.build.targets.wheel]
+packages = ["model_factory_ba"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/model_bakery",
+    "/model_factory_ba",
 ]
 
 [tool.mypy]

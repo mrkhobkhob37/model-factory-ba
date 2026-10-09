@@ -1,5 +1,5 @@
-include model_bakery/mock_file.txt
-include model_bakery/mock_img.jpeg
+include model_factory_ba/mock_file.txt
+include model_factory_ba/mock_img.jpeg
 include LICENSE
 include README.md
 include CHANGELOG.md

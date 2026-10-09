@@ -15,7 +15,7 @@ Model Bakery supports Django \>= 4.2.
 Install it with `pip`
 
 ```console
-$ pip install model-bakery
+$ pip install model-factory-ba
 ```
 
 # Contributing to Model Bakery

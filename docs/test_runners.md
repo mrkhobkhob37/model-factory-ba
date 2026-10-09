@@ -13,7 +13,7 @@ The following examples show Model Bakery usage with different test runners.
     from django.test import TestCase
 
     # Third-party app imports
-    from model_bakery import baker
+    from model_factory_ba import baker
 
     from shop.models import Customer
 
@@ -38,7 +38,7 @@ The following examples show Model Bakery usage with different test runners.
     import pytest
 
     # Third-party app imports
-    from model_bakery import baker
+    from model_factory_ba import baker
 
     from shop.models import Customer
 

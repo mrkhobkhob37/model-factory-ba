@@ -11,9 +11,9 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils.timezone import now
 
-from model_bakery.baker import BAKER_CONTENTTYPES
-from model_bakery.gis import BAKER_GIS
-from model_bakery.timezone import tz_aware
+from model_factory_ba.baker import BAKER_CONTENTTYPES
+from model_factory_ba.gis import BAKER_GIS
+from model_factory_ba.timezone import tz_aware
 
 from .fields import (
     CustomFieldViaSettings,

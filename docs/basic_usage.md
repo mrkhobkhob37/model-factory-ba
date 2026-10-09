@@ -28,7 +28,7 @@ File: **test_models.py**
 from django.test import TestCase
 
 #Third-party app imports
-from model_bakery import baker
+from model_factory_ba import baker
 
 from shop.models import Customer
 
@@ -44,7 +44,7 @@ class CustomerTestModel(TestCase):
 Importing every model over and over again is boring. So let Model Bakery import them for you:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 # 1st form: app_label.model_name
 customer = baker.make('shop.Customer')
@@ -95,7 +95,7 @@ You can use Model Bakery as:
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class PurchaseHistoryTestModel(TestCase):
 
@@ -122,7 +122,7 @@ If you want them to be created, you have to turn it on as the following:
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class PurchaseHistoryTestModel(TestCase):
 
@@ -147,7 +147,7 @@ By default, Model Bakery uses random values to populate the model's fields. But 
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class CustomerTestModel(TestCase):
 
@@ -170,7 +170,7 @@ import random
 
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class CustomerTestModel(TestCase):
     def get_random_name(self):
@@ -189,7 +189,7 @@ You can also use iterable to explicitly set values as:
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class CustomerTestModel(TestCase):
     def setUp(self):
@@ -207,9 +207,9 @@ Sometimes, you have a field with an unique value and using `make` can cause rand
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
-from model_bakery.recipe import seq
+from model_factory_ba.recipe import seq
 
 class CustomerTestModel(TestCase):
     def setUp(self):
@@ -225,7 +225,7 @@ Related objects fields are also reachable by their name or related names in a ve
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class PurchaseHistoryTestModel(TestCase):
 
@@ -247,7 +247,7 @@ Model Bakery does not create files for FileField types. If you need to have the 
 If you don't need a persisted object, Model Bakery can handle this for you as well with the **prepare** method:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 customer = baker.prepare('shop.Customer')
 ```
@@ -257,7 +257,7 @@ It works like `make` method, but it doesn't persist the instance neither the rel
 If you want to persist only the related instances but not your model, you can use the `_save_related` parameter for it:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 history = baker.prepare('shop.PurchaseHistory', _save_related=True)
 assert history.id is None
@@ -269,7 +269,7 @@ assert bool(history.customer.id) is True
 If you need to create more than one instance of the model, you can use the `_quantity` parameter for it:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 customers = baker.make('shop.Customer', _quantity=3)
 assert len(customers) == 3
@@ -278,7 +278,7 @@ assert len(customers) == 3
 It also works with `prepare`:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 customers = baker.prepare('shop.Customer', _quantity=3)
 assert len(customers) == 3
@@ -287,7 +287,7 @@ assert len(customers) == 3
 The `make` method also accepts a parameter `_bulk_create` to use Django's [bulk_create](https://docs.djangoproject.com/en/3.0/ref/models/querysets/#bulk-create) method instead of calling `obj.save()` for each created instance.
 
 ```{note}
-Django's `bulk_create` does not update the created object primary key as explained in their docs. Because of that, there's no way for model-bakery to avoid calling `save` method for all the foreign keys. But this behavior can depends on which Django version and database backend you're using.
+Django's `bulk_create` does not update the created object primary key as explained in their docs. Because of that, there's no way for model-factory-ba to avoid calling `save` method for all the foreign keys. But this behavior can depends on which Django version and database backend you're using.
 
 So, for example, if you're trying to create 20 instances of a model with a foreign key using `_bulk_create` this will result in 21 queries (20 for each foreign key object and one to bulk create your 20 instances).
 ```
@@ -295,7 +295,7 @@ So, for example, if you're trying to create 20 instances of a model with a forei
 If you want to avoid that, you'll have to perform individual bulk creations per foreign keys as the following example:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 baker.prepare(User, _quantity=5, _bulk_create=True)
 user_iter = User.objects.all().iterator()
@@ -308,7 +308,7 @@ Model Bakery supports django application with more than one database.
 If you want to determine which database bakery should use, you have the `_using` parameter:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 custom_db = "your_custom_db"
 assert custom_db in settings.DATABASES

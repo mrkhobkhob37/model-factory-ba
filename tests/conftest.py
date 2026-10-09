@@ -82,7 +82,7 @@ def pytest_configure():
 
     django.setup()
 
-    from model_bakery import baker
+    from model_factory_ba import baker
 
     def gen_same_text():
         return "always the same text"

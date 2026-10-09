@@ -25,7 +25,7 @@ shop/
 File: **baker_recipes.py**
 
 ```python
-from model_bakery.recipe import Recipe
+from model_factory_ba.recipe import Recipe
 from shop.models import Customer
 
 customer_joe = Recipe(
@@ -47,7 +47,7 @@ File: **test_model.py**
 ```python
 from django.test import TestCase
 
-from model_bakery import baker
+from model_factory_ba import baker
 
 class CustomerTestModel(TestCase):
 
@@ -61,7 +61,7 @@ class CustomerTestModel(TestCase):
 Or if you don't want a persisted instance:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 baker.prepare_recipe('shop.customer_joe')
 ```
@@ -116,7 +116,7 @@ class EmployeeTest(TestCase):
 You can define `foreign_key` relations:
 
 ```python
-from model_bakery.recipe import Recipe, foreign_key
+from model_factory_ba.recipe import Recipe, foreign_key
 from shop.models import Customer, PurchaseHistory
 
 customer = Recipe(Customer,
@@ -144,7 +144,7 @@ Using the `foreign_key` is important for 2 reasons:
 You can also use `related`, when you want two or more models to share the same parent:
 
 ```python
-from model_bakery.recipe import related, Recipe
+from model_factory_ba.recipe import related, Recipe
 from shop.models import Customer, PurchaseHistory
 
 history = Recipe(PurchaseHistory)
@@ -159,7 +159,7 @@ Note this will only work when calling `make_recipe` because the related manager 
 If you want to set m2m relationship you can use `related` as well:
 
 ```python
-from model_bakery.recipe import related, Recipe
+from model_factory_ba.recipe import related, Recipe
 
 pencil = Recipe(Product, name='Pencil')
 pen = Recipe(Product, name='Pen')
@@ -202,7 +202,7 @@ It's possible to use `callables` as recipe's attribute value.
 
 ```python
 from datetime import date
-from model_bakery.recipe import Recipe
+from model_factory_ba.recipe import Recipe
 from shop.models import Customer
 
 customer = Recipe(
@@ -233,7 +233,7 @@ Model Bakery will use the next value in the *iterator* every time you create a m
 Sometimes, you have a field with an unique value and using `make` can cause random errors. Also, passing an attribute value just to avoid uniqueness validation problems can be tedious. To solve this you can define a sequence with `seq`
 
 ```python
-from model_bakery.recipe import Recipe, seq
+from model_factory_ba.recipe import Recipe, seq
 from shop.models import Customer
 
 CustomerRecipe = Recipe(Customer,
@@ -256,7 +256,7 @@ An optional `suffix` parameter can be supplied to augment the value for cases li
 or other strings with common suffixes.
 
 ```python
-from model_bakery import.recipe import Recipe, seq
+from model_factory_ba import.recipe import Recipe, seq
 from shop.models import Customer
 
 CustomerRecipe = Recipe(Customer, email=seq('user', suffix='@example.com'))
@@ -271,7 +271,7 @@ customer.email  # 'user2@example.com'
 Sequences and iterables can be used not only for recipes, but with `baker` as well:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 customer = baker.make('Customer', name=baker.seq('Joe'))
 customer.name  # 'Joe1'
@@ -288,7 +288,7 @@ You can also provide an optional `increment_by` argument which will modify incre
 
 ```python
 from datetime import date, timedelta
-from model_bakery.recipe import Recipe, seq
+from model_factory_ba.recipe import Recipe, seq
 from shop.models import Customer
 
 
@@ -320,7 +320,7 @@ Be aware that `seq` may query the database to determine when to reset. Therefore
 Passing values when calling `make_recipe` or `prepare_recipe` will override the recipe rule.
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 baker.make_recipe('shop.customer', name='Ada Lovelace')
 ```

@@ -8,10 +8,10 @@ from django.utils.timezone import now
 
 import pytest
 
-from model_bakery import baker
-from model_bakery.exceptions import InvalidQuantityException, RecipeIteratorEmpty
-from model_bakery.recipe import Recipe, RecipeForeignKey, foreign_key, seq
-from model_bakery.timezone import tz_aware
+from model_factory_ba import baker
+from model_factory_ba.exceptions import InvalidQuantityException, RecipeIteratorEmpty
+from model_factory_ba.recipe import Recipe, RecipeForeignKey, foreign_key, seq
+from model_factory_ba.timezone import tz_aware
 from tests.generic.baker_recipes import SmallDogRecipe, pug
 from tests.generic.models import (
     TEST_TIME,
@@ -43,7 +43,7 @@ lonely_person_recipe = Recipe(LonelyPerson)
 def test_import_seq_from_recipe():
     """Import seq method directly from recipe module."""
     try:
-        from model_bakery.recipe import seq  # NoQA
+        from model_factory_ba.recipe import seq  # NoQA
     except ImportError:
         pytest.fail(f"{ImportError.__name__} raised")
 

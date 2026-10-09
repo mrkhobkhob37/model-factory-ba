@@ -1,11 +1,11 @@
 ## How to Contribute
 
-This page list all the steps you need to follow to set up `model_bakery` and be able to code it. Here they are:
+This page list all the steps you need to follow to set up `model_factory_ba` and be able to code it. Here they are:
 
 1. [Fork this repo](https://github.com/model-bakers/model_bakery/fork) and clone it to your computer:
 
 ```
-git clone git@github.com:YOUR_USER/model_bakery.git
+git clone git@github.com:YOUR_USER/model_factory_ba.git
 ```
 
 2. Install the dev dependencies:

@@ -1,6 +1,6 @@
 from django.utils.timezone import now
 
-from model_bakery.recipe import Recipe
+from model_factory_ba.recipe import Recipe
 from tests.generic.models import Person
 
 person = Recipe(

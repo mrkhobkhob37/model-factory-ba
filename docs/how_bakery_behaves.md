@@ -8,7 +8,7 @@ You can override this behavior by:
 
 ```python
 # from "Basic Usage" page, assume all fields either null=True or blank=True
-from model_bakery import baker
+from model_factory_ba import baker
 
 customer = baker.make('shop.Customer', enjoy_jards_macale=True, bio="A fan of Jards Malacé")
 ```
@@ -59,7 +59,7 @@ Both can be the real python objects imported in settings or just specified as im
 Examples:
 
 ```python
-from model_bakery import baker
+from model_factory_ba import baker
 
 def gen_func():
     return 'value'
@@ -73,7 +73,7 @@ def gen_func():
     return 'value'
 
 # in your tests.py file:
-from model_bakery import baker
+from model_factory_ba import baker
 
 baker.generators.add('test.generic.fields.CustomField', 'code.path.gen_func')
 ```
@@ -82,7 +82,7 @@ baker.generators.add('test.generic.fields.CustomField', 'code.path.gen_func')
 
 In some rare cases, you might need to customize the way Baker base class behaves.
 This can be achieved by creating a new class and specifying it in your settings files. It is likely that you will want to extend Baker, however the minimum requirement is that the custom class have `make` and `prepare` functions.
-In order for the custom class to be used, make sure to use the `model_bakery.baker.make` and `model_bakery.baker.prepare` functions, and not `model_bakery.baker.Baker` directly.
+In order for the custom class to be used, make sure to use the `model_factory_ba.baker.make` and `model_factory_ba.baker.prepare` functions, and not `model_factory_ba.baker.Baker` directly.
 
 Examples:
 

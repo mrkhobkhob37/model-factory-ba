@@ -1,14 +1,14 @@
 import os
 import sys
 
-from model_bakery import __about__
+from model_factory_ba import __about__
 
 sys.path.insert(0, os.path.abspath(".."))
 
 project = "Model Bakery"
 copyright = "2023, Rust Saiargaliev"
 author = "Rust Saiargaliev"
-version = release = __about__.__version__
+version = release = __about__.FORK_VERSION
 
 extensions = [
     "myst_parser",
